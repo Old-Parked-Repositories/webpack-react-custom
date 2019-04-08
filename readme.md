@@ -1,4 +1,4 @@
-# Webpack Notes
+# Webpack Notes and Config for React Setup
 
 ## Libraries
 ### react Libraries
@@ -102,6 +102,7 @@ url('./my-image.png')
 }
 ```
 
+### Webpack config example
 ```
 const webpack = require('webpack'); //to access built-in plugins
 const path = require('path');
@@ -175,10 +176,27 @@ module.exports = {
     ]
   },
   plugins: [
-    
+    new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+      filename: "index.html",
+      title: "Learning Webpack"
+    })
   ]
 };
 ```
 
 ## Plugins
+```
+plugins: [
+  new webpack.HotModuleReplacementPlugin(), // for hot module replacement
+  new CleanWebpackPlugin(), // During build cleans the dist folder befor compiling assets
+  new HtmlWebpackPlugin({ //Controls how to create the index.html file in dist folder
+    template: "./src/index.html",
+    filename: "index.html",
+    title: "Learning Webpack"
+  })
+]
+```
 
