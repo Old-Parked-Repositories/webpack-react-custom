@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "Advent Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./advent-pro-v9-latin-regular.woff2") format("woff2"),
+    url("./advent-pro-v9-latin-regular.woff") format("woff");
+}
+
+.hello {
+  color: yellow;
+  background: url("./bridge.jpeg");
+  font-family: "Advent Pro";
+  min-height: 354px;
+}
