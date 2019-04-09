@@ -35,6 +35,7 @@ npm install --save-dev source-map // sourcemap with production support
 npm install --save-dev inline-source-map // sourcemap with no production support
 npm install --save-dev webpack-dev-server // webpack devserver
 npm install --save-dev react-hot-loader // react hot module
+npm install --save-dev mini-css-extract-plugin // splits css into seperate file
 ```
 
 ### Configure Babel for react

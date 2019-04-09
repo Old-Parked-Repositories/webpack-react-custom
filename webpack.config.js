@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const devMode = process.env.NODE_ENV !== "production";
 
 module.exports = {
   mode: "development",
@@ -15,8 +17,8 @@ module.exports = {
     hot: true
   },
   output: {
-    filename: '[name].bundle.js',
-    // filename: '[name]-[hash].bundle.js',
+    filename: 'js/[name].bundle.js',
+    // filename: 'js/..[name]-[hash].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   resolve: {
@@ -37,7 +39,18 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
+          // "style-loader",
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          // devMode ? "style-loader" : {
+          //   loader: MiniCssExtractPlugin.loader,
+          //   // options: {
+          //   //   // you can specify a publicPath here
+          //   //   // by default it use publicPath in webpackOptions.output
+          //   //   publicPath: '../'
+          //   // }
+          // },
           'css-loader',
           {
             loader: "sass-loader"
@@ -46,11 +59,25 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
-        use: ["file-loader"]
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'images',
+            }
+          }
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ['file-loader']
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'fonts',
+            }
+          }
+        ],
       },
       {
         test: /\.(csv|tsv)$/,
@@ -69,6 +96,12 @@ module.exports = {
       template: "./src/index.html",
       filename: "index.html",
       title: "Learning Webpack"
+    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "css/[name].css",
+      chunkFilename: "css/[id].css"
     })
   ]
 };
