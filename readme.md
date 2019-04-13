@@ -25,6 +25,7 @@ npm install --save-dev style-loader // inject css in html
 npm install --save-dev css-loader //css
 npm install --save-dev babel-loader @babel/core @babel/preset-env // es6
 npm install --save-dev babel-loader @babel/core @babel/preset-env @babel/preset-react // react jsx
+npm install --save-dev babel-loader @babel/core @babel/preset-env @babel/plugin-proposal-class-properties @babel/preset-react // react jsx with class properties
 npm install --save-dev sass-loader node-sass // sass
 npm install --save-dev ts-loader //type script
 npm install --save-dev file-loader // files, e.g. images, fonts
@@ -42,7 +43,7 @@ npm install --save-dev mini-css-extract-plugin // splits css into seperate file
 ```
 // Create .babelrc file and put in
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"]
+  "presets": ["@babel/preset-env", "@babel/preset-react", "@babel/plugin-proposal-class-properties"]
 }
 ```
 
