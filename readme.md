@@ -3,7 +3,7 @@
 ## Libraries
 ### react Libraries
 ```
-npm install --save-dev react react-dom
+npm install --save react react-dom
 ```
 
 ## Resolving
